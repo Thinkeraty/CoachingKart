@@ -82,3 +82,44 @@ export default class LoginScreen extends React.Component {
         )
     }
 }
+
+const styles = StyleSheet.create({
+    container:{
+        flex: 1,
+        backgroundColor: "#fff",
+        alignItems: "center",
+        marginTop: 50,
+    },
+    inputBox: {
+        width: 300,
+        height: 50,
+        borderBottomWidth: 1.5,
+        borderColor : '#ff8a65',
+        fontSize: 20,
+        margin:10,
+        paddingLeft: 10
+    },
+    button: {
+        width:300,
+        height:50,
+        justifyContent:'center',
+        alignItems:'center',
+        borderRadius: 20,
+        marginTop: 20,
+        backgroundColor:"#ff9800",
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 8,
+        },
+        shadowOpacity: 0.30,
+        shadowRadius: 10.32,
+        elevation: 16,
+        padding: 10
+    },
+    buttonText: {
+        color:'#ffff',
+        fontWeight:'200',
+        fontSize:18
+    }
+})
