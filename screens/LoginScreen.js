@@ -38,6 +38,9 @@ export default class LoginScreen extends React.Component {
     render() {
         return (
             <View style={styles.container}>
+
+                <Text style={styles.header}>Login</Text>
+
                 <TextInput
                     style={styles.inputBox}
                     placeholder="Email Id"
@@ -76,6 +79,12 @@ const styles = StyleSheet.create({
         backgroundColor: "#fff",
         alignItems: "center",
         marginTop: 50,
+    },
+    header: {
+        fontSize: 35,
+        color: '#ff5400',
+        marginTop: 30,
+        marginBottom: 40
     },
     inputBox: {
         width: 300,
