@@ -4,23 +4,25 @@ import { StyleSheet, Text, View } from 'react-native';
 import { createAppContainer, createSwitchNavigator } from 'react-navigation'
 import { createBottomTabNavigator } from 'react-navigation-tabs'
 
-import LoginScreen from './screens/LoginScreen';
-import SignupScreen from './screens/SignupScreen';
+import AddDataScreen from './screens/AddDataScreen';
+
+import { AppTabNavigator } from './components/AppTabNavigator';
 
 export default class App extends React.Component {
   render() {
     return(
-      <AppContainer />
+        <AppContainer />
     )
   }
 }
 
-const TabNavigator = createBottomTabNavigator({
-  Login: { screen: LoginScreen },
-  Signup: { screen: SignupScreen }
+const SwitchNavigator = createSwitchNavigator({
+  // Welcome: { screen: WelcomeScreen },
+  AddData: { screen: AddDataScreen },
+  BottomTab: { screen: AppTabNavigator }
 })
 
-const AppContainer = createAppContainer(TabNavigator)
+const AppContainer = createAppContainer(SwitchNavigator);
 
 const styles = StyleSheet.create({
   
