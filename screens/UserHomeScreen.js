@@ -24,7 +24,8 @@ export default class WelcomeScreen extends React.Component {
 
     render() {
         return (
-            <View>
+            <View style={styles.container}>
+                <Text>Herro</Text>
             </View>
         )
     }

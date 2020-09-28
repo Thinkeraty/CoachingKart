@@ -6,6 +6,10 @@ import { createBottomTabNavigator } from 'react-navigation-tabs'
 
 import AddDataScreen from './screens/AddDataScreen';
 
+import LoginScreen from './screens/LoginScreen';
+import SignupScreen from './screens/SignupScreen';
+import UserHomeScreen from './screens/UserHomeScreen'
+
 import { AppTabNavigator } from './components/AppTabNavigator';
 
 export default class App extends React.Component {
@@ -17,9 +21,12 @@ export default class App extends React.Component {
 }
 
 const SwitchNavigator = createSwitchNavigator({
-  // Welcome: { screen: WelcomeScreen },
+  Login: { screen: LoginScreen },
+  Signup:{ screen: SignupScreen },
   AddData: { screen: AddDataScreen },
-  BottomTab: { screen: AppTabNavigator }
+  UserHomeScreen: { screen: UserHomeScreen }
+  // BottomTab: { screen: AppTabNavigator }
+  
 })
 
 const AppContainer = createAppContainer(SwitchNavigator);
