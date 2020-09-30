@@ -41,7 +41,7 @@ export default class AddDataScreen extends React.Component {
     }
 
     saveTeacherData = () => {
-        db.collection('teachers').add({
+        db.collection('users').add({
             "first_name": this.state.teacherFirstName,
             "last_name": this.state.teacherLastName,
             "contact": this.state.teacherContact,
@@ -58,7 +58,7 @@ export default class AddDataScreen extends React.Component {
     }
 
     saveStudentData = () => {
-        db.collection('students').add({
+        db.collection('users').add({
             "first_name": this.state.studentFirstName,
             "last_name": this.state.studentLastName,
             "contact": this.state.studentContact,
