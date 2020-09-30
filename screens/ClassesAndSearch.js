@@ -17,9 +17,11 @@ import firebase from 'firebase';
 
 import { ListItem } from 'react-native-elements'
 
+import AppHeader from '../components/AppHeader';
+
 // import { ActivityIndicator } from 'react-native-paper'
 
-export default class WelcomeScreen extends React.Component {
+export default class ClassesAndSearch extends React.Component {
     constructor() {
         super()
 
@@ -73,8 +75,8 @@ export default class WelcomeScreen extends React.Component {
       <ListItem
         key={i}
         title={item.class_name}
-        subtitle={<Text style={{color: "#797979"}}>Sub: {item.class_subject}{"\n"}For Class(s): {item.class_standard}</Text>}
-        titleStyle={{ color: 'black', fontWeight: 'bold' }}
+        subtitle={<Text style={{color: "#797979", fontSize: 18}}>Subject: {item.class_subject}{"\n"}For Class(s): {item.class_standard}</Text>}
+        titleStyle={{ color: 'black', fontWeight: 'bold', fontSize: 25,  marginBottom: 10 }}
         // leftElement={
         //   <Image
         //     style={{height: 50, width: 50}}
@@ -97,7 +99,8 @@ export default class WelcomeScreen extends React.Component {
 
     render() {
         return (
-            <View style={{flex: 1, marginTop: 50}}>
+            <View style={{flex: 1, marginTop: 20}}>
+                <AppHeader title="Your Classes" navigation={this.props.navigation} style={{marginTop: -30}} />
                 <FlatList
                     keyExtractor={this.keyExtractor}
                     renderItem={this.renderItem}

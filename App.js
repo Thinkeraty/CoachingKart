@@ -8,7 +8,7 @@ import AddDataScreen from './screens/AddDataScreen';
 
 import LoginScreen from './screens/LoginScreen';
 import SignupScreen from './screens/SignupScreen';
-import UserHomeScreen from './screens/UserHomeScreen'
+import ClassAndSearch from './screens/ClassesAndSearch'
 import AddClasses from './screens/AddClasses'
 
 import { AppTabNavigator } from './components/AppTabNavigator';
@@ -25,7 +25,7 @@ const SwitchNavigator = createSwitchNavigator({
   Login: { screen: LoginScreen },
   Signup:{ screen: SignupScreen },
   AddData: { screen: AddDataScreen },
-  UserHomeScreen: { screen: UserHomeScreen },
+  ClassesAndSearch: { screen: ClassAndSearch },
   AddClasses: { screen: AddClasses }
   // BottomTab: { screen: AppTabNavigator }
   

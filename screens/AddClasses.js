@@ -139,7 +139,7 @@ export default class AddClasses extends React.Component {
 
                         <TouchableOpacity
                             style={styles.button}
-                            onPress={() => { this.props.navigation.navigate('UserHomeScreen') }}
+                            onPress={() => { this.props.navigation.navigate('ClassesAndSearch') }}
                         >
                         <Text style={styles.buttonText}>Cancel</Text>
                         </TouchableOpacity>

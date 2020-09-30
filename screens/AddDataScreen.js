@@ -52,7 +52,7 @@ export default class AddDataScreen extends React.Component {
         .then((response) => {
             console.log(response)
             Alert.alert('Data added successfully')
-            this.props.navigation.navigate('UserHomeScreen')
+            this.props.navigation.navigate('ClassesAndSearch')
         })
         .catch((err) => {console.log(err)})
     }
@@ -71,7 +71,7 @@ export default class AddDataScreen extends React.Component {
         .then((response) => {
             console.log(response)
             Alert.alert('Data added successfully')
-            this.props.navigation.navigate('UserHomeScreen')
+            this.props.navigation.navigate('ClassesAndSearch')
         })
         .catch((err) => {console.log(err)})
     }

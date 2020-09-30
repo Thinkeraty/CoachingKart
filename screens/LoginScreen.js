@@ -32,7 +32,7 @@ export default class LoginScreen extends React.Component {
                 snapshot.forEach(doc => {
                     var data = doc.data()
                     if(data.account_type == "student" || data.account_type == "teacher") {
-                        this.props.navigation.navigate('UserHomeScreen')
+                        this.props.navigation.navigate('ClassesAndSearch')
                     } else {
                         this.props.navigation.navigate('AddData')
                     }
