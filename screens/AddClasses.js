@@ -12,6 +12,8 @@ import {
     FlatList
 } from 'react-native';
 
+import AppHeader from '../components/AppHeader'
+
 import db from '../config';
 import firebase from 'firebase';
 
@@ -66,7 +68,7 @@ export default class AddClasses extends React.Component {
             <View style={styles.container}>
                 <ScrollView>
                         {/* <KeyboardAvoidingView style={styles.KeyboardAvoidingView}> */}
-                        <Text style={styles.modalTitle}>Add A Class</Text>
+                        <AppHeader title="Add Class" navigation={this.props.navigation} style={{marginTop: -30}} />
                         <TextInput
                             style={styles.inputBox}
                             placeholder ={"Class Name"}
@@ -77,6 +79,7 @@ export default class AddClasses extends React.Component {
                             })
                             }}
                         />
+                        {/* Maths, Physics, Chemistry, Biology, English, History, Civics, Geography, Hindi, Computer, Music, Art*/}
                         <TextInput
                             style={styles.inputBox}
                             placeholder ={"Subject"}
