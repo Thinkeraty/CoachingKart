@@ -124,7 +124,7 @@ export default class SearchClasses extends React.Component {
             const classes = await db.collection("classes").where('class_subject', '==', text).get()
             classes.docs.map((doc) => {
                 this.setState({
-                    allTransaction: [...this.state.allClasses, doc.data()],
+                    allClasses: [...this.state.allClasses, doc.data()],
                     lastVisibleClass: doc
                 })
             })
@@ -132,7 +132,7 @@ export default class SearchClasses extends React.Component {
             const classes = await db.collection("classes").where('class_subject', '==', text).get()
             classes.docs.map((doc) => {
                 this.setState({
-                    allTransaction: [...this.state.allClasses, doc.data()],
+                    allClasses: [...this.state.allClasses, doc.data()],
                     lastVisibleClass: doc
                 })
             })
@@ -140,7 +140,7 @@ export default class SearchClasses extends React.Component {
             const classes = await db.collection("classes").where('class_subject', '==', text).get()
             classes.docs.map((doc) => {
                 this.setState({
-                    allTransaction: [...this.state.allClasses, doc.data()],
+                    allClasses: [...this.state.allClasses, doc.data()],
                     lastVisibleClass: doc
                 })
             })
@@ -148,7 +148,7 @@ export default class SearchClasses extends React.Component {
             const classes = await db.collection("classes").where('class_subject', '==', text).get()
             classes.docs.map((doc) => {
                 this.setState({
-                    allTransaction: [...this.state.allClasses, doc.data()],
+                    allClasses: [...this.state.allClasses, doc.data()],
                     lastVisibleClass: doc
                 })
             })
