@@ -22,6 +22,7 @@ export default class AddDataScreen extends React.Component {
         this.state = {
 
             userId: firebase.auth().currentUser.email,
+            userDocId: "",
 
             isTeacherModalVisible: false,
             isStudentModalVisible: false,
@@ -40,30 +41,42 @@ export default class AddDataScreen extends React.Component {
         }
     }
 
+    getDocId = () => {
+        var query = db.collection('users')
+        .where('email_id', '==', this.state.userId)
+        .get()
+        .then((snapshot) => {
+            snapshot.forEach((doc) => {
+                this.setState({
+                    userDocId: doc.id
+                })
+            })
+        console.log(this.state.userDocId)
+        })
+    }
+
     saveTeacherData = () => {
-        db.collection('users').add({
+        db.collection('users').doc(this.state.userDocId).update({
             "first_name": this.state.teacherFirstName,
             "last_name": this.state.teacherLastName,
             "contact": this.state.teacherContact,
             "address": this.state.teacherAddress,
-            "email_id": this.state.userId,
             "account_type": "teacher"
         })
         .then((response) => {
             console.log(response)
             Alert.alert('Data added successfully')
-            this.props.navigation.navigate('ClassesAndSearch')
+            this.props.navigation.navigate('TeacherClasses')
         })
         .catch((err) => {console.log(err)})
     }
 
     saveStudentData = () => {
-        db.collection('users').add({
+        db.collection('users').doc(this.state.userDocId).update({
             "first_name": this.state.studentFirstName,
             "last_name": this.state.studentLastName,
             "contact": this.state.studentContact,
             "address": this.state.studentAddress,
-            "email_id": this.state.userId,
             "student_class": this.state.studentClass,
             "student_school": this.state.studentSchool,
             "account_type": "student"
@@ -71,7 +84,7 @@ export default class AddDataScreen extends React.Component {
         .then((response) => {
             console.log(response)
             Alert.alert('Data added successfully')
-            this.props.navigation.navigate('ClassesAndSearch')
+            this.props.navigation.navigate('SearchScreen')
         })
         .catch((err) => {console.log(err)})
     }
@@ -239,6 +252,10 @@ export default class AddDataScreen extends React.Component {
                 </View>
             </Modal>
         )
+    }
+
+    componentDidMount() {
+        this.getDocId()
     }
     
     render() {

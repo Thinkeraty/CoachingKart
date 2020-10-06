@@ -30,7 +30,12 @@ export default class LoginScreen extends React.Component {
         } else {
             firebase.auth().createUserWithEmailAndPassword(email, password)
                 .then(() => {
-                    return Alert.alert("Account Created Successfuly")
+                    db.collection('users').add({
+                        "email_id": email,
+                    })
+                    .then(() => {
+                        return Alert.alert("Account Created Successfuly")
+                    })
                 })
                 .catch((error) => {
                     console.log(error)
