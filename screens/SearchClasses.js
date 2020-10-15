@@ -54,7 +54,7 @@ export default class SearchClasses extends React.Component {
                 })
             })
         } else if(enteredText[0].toUpperCase === "C" /* Chemistry */ ) {
-            const query = await db.collection('classes').where('class_subject', '==', text)
+            const query = await db.collection('users').where('subject', '==', text)
             .startAfter(this.state.lastVisibleClass)
             .limit(10)
             .get()
@@ -118,41 +118,53 @@ export default class SearchClasses extends React.Component {
     }
     
     searchClasses = async (text) => {
-        var enteredText = text.split("")
-        
-        if(enteredText[0].toUpperCase() === "M" /* Maths */ ) {
-            const classes = await db.collection("classes").where('class_subject', '==', text).get()
+
+        if(text.toUpperCase().includes("COMP")){
+            var subject = "Computer"
+            const classes = await db.collection("classes").where("class_subject","==",subject).get()
             classes.docs.map((doc) => {
-                this.setState({
-                    allClasses: [...this.state.allClasses, doc.data()],
-                    lastVisibleClass: doc
-                })
-            })
-        } else if(enteredText[0].toUpperCase() === "P" /* Physics */ ) {
-            const classes = await db.collection("classes").where('class_subject', '==', text).get()
-            classes.docs.map((doc) => {
-                this.setState({
-                    allClasses: [...this.state.allClasses, doc.data()],
-                    lastVisibleClass: doc
-                })
-            })
-        } else if(enteredText[0].toUpperCase + enteredText[1].toUpperCase === "Ci") {
-            const classes = await db.collection("classes").where('class_subject', '==', text).get()
-            classes.docs.map((doc) => {
-                this.setState({
-                    allClasses: [...this.state.allClasses, doc.data()],
-                    lastVisibleClass: doc
-                })
-            })
-        } else if(enteredText[0].toUpperCase() === "B" /* Biology */ ) {
-            const classes = await db.collection("classes").where('class_subject', '==', text).get()
-            classes.docs.map((doc) => {
+                console.log(doc.data())
                 this.setState({
                     allClasses: [...this.state.allClasses, doc.data()],
                     lastVisibleClass: doc
                 })
             })
         }
+        // /*var enteredText = text.split("")
+        
+        // if(enteredText[0].toUpperCase() === "M" /* Maths */ ) {
+        //     const classes = await db.collection("classes").where('class_subject', '==', text).get()
+        //     classes.docs.map((doc) => {
+        //         this.setState({
+        //             allClasses: [...this.state.allClasses, doc.data()],
+        //             lastVisibleClass: doc
+        //         })
+        //     })
+        // } else if(enteredText[0].toUpperCase() === "P" /* Physics */ ) {
+        //     const classes = await db.collection("classes").where('class_subject', '==', text).get()
+        //     classes.docs.map((doc) => {
+        //         this.setState({
+        //             allClasses: [...this.state.allClasses, doc.data()],
+        //             lastVisibleClass: doc
+        //         })
+        //     })
+        // } else if(enteredText[0].toUpperCase + enteredText[1].toUpperCase === "Ci") {
+        //     const classes = await db.collection("classes").where('class_subject', '==', text).get()
+        //     classes.docs.map((doc) => {
+        //         this.setState({
+        //             allClasses: [...this.state.allClasses, doc.data()],
+        //             lastVisibleClass: doc
+        //         })
+        //     })
+        // } else if(enteredText[0].toUpperCase() === "B" /* Biology */ ) {
+        //     const classes = await db.collection("classes").where('class_subject', '==', text).get()
+        //     classes.docs.map((doc) => {
+        //         this.setState({
+        //             allClasses: [...this.state.allClasses, doc.data()],
+        //             lastVisibleClass: doc
+        //         })
+        //     })
+        // }
     }
 
     componentDidMount = async() => {

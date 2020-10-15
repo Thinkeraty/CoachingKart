@@ -34,7 +34,7 @@ export default class ClassesAndSearch extends React.Component {
         this.requestRef = null;
     }
 
-    getAccountType = () => {
+    getAccountType=()=> {
         var email = firebase.auth().currentUser.email;
         db.collection('users').where('email_id','==',email).get()
             .then(snapshot => {
@@ -47,7 +47,7 @@ export default class ClassesAndSearch extends React.Component {
     })
     }
 
-    getClassList =()=>{
+    getClassList=()=>{
         var user = firebase.auth().currentUser
         this.requestRef = db.collection("classes").where('userId', '==', user.uid)
         .onSnapshot((snapshot)=>{

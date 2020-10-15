@@ -31,6 +31,7 @@ export default class AddDataScreen extends React.Component {
             teacherLastName: "",
             teacherContact: "",
             teacherAddress: "",
+            subject: " ",
 
             studentFirstName: "",
             studentLastName: "",
@@ -61,6 +62,7 @@ export default class AddDataScreen extends React.Component {
             "last_name": this.state.teacherLastName,
             "contact": this.state.teacherContact,
             "address": this.state.teacherAddress,
+            "subject": this.state.subject,
             "account_type": "teacher"
         })
         .then((response) => {
@@ -137,6 +139,16 @@ export default class AddDataScreen extends React.Component {
                             onChangeText={(text)=>{
                                 this.setState({
                                 teacherAddress: text
+                            })
+                            }}
+                        />
+                        <TextInput
+                            style={styles.inputBox}
+                            placeholder ={"Subject"}
+                            
+                            onChangeText={(text)=>{
+                                this.setState({
+                                subject: text
                             })
                             }}
                         />

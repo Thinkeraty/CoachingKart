@@ -98,6 +98,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         marginTop: 50,
     },
+    
     header: {
         fontSize: 35,
         color: '#ff5400',
