@@ -2,14 +2,16 @@ import firebase from 'firebase';
 require('@firebase/firestore')
 
 var firebaseConfig = {
-  apiKey: "AIzaSyBUF1UbQ0hoGL0VKrYTHiPpL6xSt0_T-uw",
-  authDomain: "project-96fdb.firebaseapp.com",
-  databaseURL: "https://project-96fdb.firebaseio.com",
-  projectId: "project-96fdb",
-  storageBucket: "project-96fdb.appspot.com",
-  messagingSenderId: "964350537993",
-  appId: "1:964350537993:web:2c5c66b76284d72cef23d8"
-};
+    apiKey: "AIzaSyAs4bbEAzJdB-9O_NbZxSsk7hemLrt4FN0",
+    authDomain: "coachingkart.firebaseapp.com",
+    databaseURL: "https://coachingkart.firebaseio.com",
+    projectId: "coachingkart",
+    storageBucket: "coachingkart.appspot.com",
+    messagingSenderId: "807411960195",
+    appId: "1:807411960195:web:7f68ec426f913df3410eb6"
+  };
+
+
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
