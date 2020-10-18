@@ -39,6 +39,7 @@ export default class AddClasses extends React.Component {
 
     saveClassData = (className, classSubject, classStandard, classContact, classEmail, classAddress) => {
         var userId = firebase.auth().currentUser.uid
+        var email = firebase.auth().currentUser.email
         // var docId = this.createUniqueId()
         db.collection("classes").add({
             "userId": userId,
@@ -46,7 +47,7 @@ export default class AddClasses extends React.Component {
             "class_subject": classSubject,
             "class_standard": classStandard,
             "class_contact": classContact,
-            "class_email": classEmail,
+            "class_email": email,
             "class_address": classAddress,
             // "id": docId
         })
@@ -66,13 +67,13 @@ export default class AddClasses extends React.Component {
     render() {
         return(
             <View style={styles.container}>
-                <ScrollView>
+                {/* <ScrollView> */}
                         {/* <KeyboardAvoidingView style={styles.KeyboardAvoidingView}> */}
-                        <AppHeader title="Add Class" navigation={this.props.navigation} style={{marginTop: -30}} />
+                        <AppHeader title="Add Class" navigation={this.props.navigation} style={{marginTop: -85, height: 110}} />
                         <TextInput
                             style={styles.inputBox}
                             placeholder ={"Class Name"}
-                            maxLength ={8}
+                            maxLength ={30}
                             onChangeText={(text)=>{
                                 this.setState({
                                 teacherClassName: text
@@ -83,7 +84,7 @@ export default class AddClasses extends React.Component {
                         <TextInput
                             style={styles.inputBox}
                             placeholder ={"Subject"}
-                            maxLength ={8}
+                            maxLength ={20}
                             onChangeText={(text)=>{
                                 this.setState({
                                 teacherClassSubject: text
@@ -114,16 +115,6 @@ export default class AddClasses extends React.Component {
                         />
                         <TextInput
                             style={styles.inputBox}
-                            placeholder ={"Displayed Email Address"}
-                            multiline = {true}
-                            onChangeText={(text)=>{
-                                this.setState({
-                                teacherClassEmail: text
-                            })
-                            }}
-                        />
-                        <TextInput
-                            style={styles.inputBox}
                             placeholder ={"Location"}
                             multiline = {true}
                             onChangeText={(text)=>{
@@ -147,7 +138,7 @@ export default class AddClasses extends React.Component {
                         <Text style={styles.buttonText}>Cancel</Text>
                         </TouchableOpacity>
                         {/* </KeyboardAvoidingView> */}
-                    </ScrollView>
+                    {/* </ScrollView> */}
                 </View>
         )
     }
@@ -158,7 +149,6 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: "#fff",
         alignItems: 'center',
-        marginTop: 50,
         justifyContent: 'center'
     },
     button: {
@@ -196,7 +186,8 @@ const styles = StyleSheet.create({
         borderColor : '#ff8a65',
         fontSize: 18,
         margin:10,
-        paddingLeft: 10
+        paddingLeft: 10,
+        top: 20
     },
     modalTitle: {
         alignSelf:'center',

@@ -100,7 +100,7 @@ export default class ClassesAndSearch extends React.Component {
     render() {
         return (
             <View style={{flex: 1, marginTop: 20}}>
-                <AppHeader title="Your Classes" navigation={this.props.navigation} style={{marginTop: -30}} />
+                <AppHeader title="Your Classes" navigation={this.props.navigation} style={{marginTop: -5, height: 110}} />
                 <FlatList
                     keyExtractor={this.keyExtractor}
                     renderItem={this.renderItem}

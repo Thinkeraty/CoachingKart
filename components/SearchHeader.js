@@ -1,9 +1,9 @@
 import React, { Component} from 'react';
 import { Header,Icon,Badge } from 'react-native-elements';
-import { View, Text, StyeSheet ,Alert} from 'react-native';
+import { View, Text, StyeSheet ,Alert, TextInput} from 'react-native';
 import db from '../config'
 
-export default class AppHeader extends Component{
+export default class SearchHeader extends Component{
   constructor(props){
     super(props)
     this.state={
@@ -44,10 +44,10 @@ export default class AppHeader extends Component{
     return(
         <Header
           leftComponent={<Icon name='bars' type='font-awesome' color='#fff' containerStyle={{marginBottom: 10}} onPress={() => /*this.props.navigation.toggleDrawer()*/props.navigation.dispatch(DrawerActions.toggleDrawer())}/>}
-          centerComponent={{ text: this.props.title, style: { color: '#fff', fontSize:30,fontWeight:"bold", marginBottom: 15} }}
+          centerComponent={<TextInput style={{borderWidth: 2, height: 60, width: 270, paddingLeft: 10, borderRadius: 5, backgroundColor: "white"}} placeholder="Enter Search Query" onChangeText={this.props.onChangeText}/>}
           rightComponent={<this.BellIconWithBadge {...this.props}/>}
           backgroundColor = "#ff5400"
-          containerStyle={this.props.style}
+          containerStyle={{height: 120}}
         />
 
 )

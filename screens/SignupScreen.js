@@ -32,6 +32,7 @@ export default class LoginScreen extends React.Component {
                 .then(() => {
                     db.collection('users').add({
                         "email_id": email,
+                        "user_bio": ''
                     })
                     .then(() => {
                         return Alert.alert("Account Created Successfuly")
