@@ -34,7 +34,7 @@ export default class LoginScreen extends React.Component {
                     if(data.account_type == "student") {
                         this.props.navigation.navigate('SearchClasses')
                     } else if(data.account_type == "teacher") {
-                        this.props.navigation.navigate('AddClasses')
+                        this.props.navigation.navigate('TeacherClasses')
                     } else {
                         this.props.navigation.navigate('AddData')
                     }

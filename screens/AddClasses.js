@@ -40,7 +40,7 @@ export default class AddClasses extends React.Component {
     saveClassData = (className, classSubject, classStandard, classContact, classEmail, classAddress) => {
         var userId = firebase.auth().currentUser.uid
         var email = firebase.auth().currentUser.email
-        // var docId = this.createUniqueId()
+        var classId = this.createUniqueId()
         db.collection("classes").add({
             "userId": userId,
             "class_name": className,
@@ -49,7 +49,7 @@ export default class AddClasses extends React.Component {
             "class_contact": classContact,
             "class_email": email,
             "class_address": classAddress,
-            // "id": docId
+            "class_id": classId
         })
 
         this.setState({

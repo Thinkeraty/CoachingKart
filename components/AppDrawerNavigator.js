@@ -4,8 +4,7 @@ import { AppTabNavigator } from './AppTabNavigator'
 import CustomSideBarMenu  from './CustomSideBarMenu';
 import TeacherClasses from '../screens/TeacherClasses'
 import AddClasses from '../screens/AddClasses';
-// import NotificationScreen from '../screens/NotificationScreen';
-// import SettingScreen from '../screens/SettingScreen';
+import TeacherSettingScreen from '../screens/TeacherSettingScreen';
 
 import { Icon } from 'react-native-elements'
 import { materialicons } from '@expo/vector-icons';
@@ -24,13 +23,14 @@ export const AppDrawerNavigator = createDrawerNavigator({
       drawerLabel: 'My Donations'
     }
   },
-//    RecievedBookScreen: {
-//     screen : RecievedBookScreen,
-//     navigationOptions: {
-//       drawerIcon: <Icon name="gift" type='font-awesome'/>,
-//       drawerLabel: 'Recieved Books'
-//     }
-//   },
+  
+  Settings : {
+    screen : TeacherSettingScreen,
+    navigationOptions: {
+      drawerIcon: <Icon type={'materialicon'} name={'settings'} />,
+      drawerLabel: 'Settings'
+    }
+  },
 //   Notification : {
 //     screen : NotificationScreen,
 //     navigationOptions: {
@@ -38,13 +38,7 @@ export const AppDrawerNavigator = createDrawerNavigator({
 //       drawerLabel: 'Notifications'
 //     }
 //   },
-//   Setting : {
-//     screen : SettingScreen,
-//     navigationOptions: {
-//       drawerIcon: <Icon type={'materialicon'} name={'settings'} />,
-//       drawerLabel: 'Settings'
-//     }
-//   }
+  
 },
   {
     contentComponent:CustomSideBarMenu

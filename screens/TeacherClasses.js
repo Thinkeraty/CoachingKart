@@ -83,15 +83,15 @@ export default class ClassesAndSearch extends React.Component {
         //     source={{uri: item.image_link}}
         //   />
         // }
-        // rightElement={
-        //     <TouchableOpacity style={styles.button}
-        //       onPress ={()=>{
-        //         this.props.navigation.navigate("RecieverDetails",{"details": item})
-        //       }}
-        //       >
-        //       <Text style={{color:'#ffff'}}>View</Text>
-        //     </TouchableOpacity>
-        //   }
+        rightElement={
+            <TouchableOpacity style={{width:90, marginTop: 100, bottom: 60, borderRadius: 10, height:50, justifyContent:'center', alignItems:'center', backgroundColor:"#ff5722", shadowColor: "#000", shadowOffset: { width: 0, height: 8 }}}
+              onPress ={()=>{
+                this.props.navigation.navigate("EditClasses",{"details": item})
+              }}
+              >
+              <Text style={{color:'#ffff'}}>Edit</Text>
+            </TouchableOpacity>
+          }
         bottomDivider
       />
     )

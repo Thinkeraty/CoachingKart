@@ -14,7 +14,7 @@ import firebase from 'firebase'
 
 import { RFValue } from 'react-native-responsive-fontsize'
 
-export default class SettingScreen extends Component{
+export default class TeacherSettingScreen extends Component{
   constructor(){
     super();
     this.state={
@@ -24,23 +24,25 @@ export default class SettingScreen extends Component{
       address   : '',
       contact   : '',
       docId     : '',
-      userBio   : ''
+      standard  : '',
+      schoolName: '',
     }
   }
 
   getUserDetails=()=>{
     var email = firebase.auth().currentUser.email;
-    db.collection('users').where('user_email','==',email).get()
+    db.collection('users').where('email_id','==',email).get()
     .then(snapshot => {
       snapshot.forEach(doc => {
       var data = doc.data()
         this.setState({
-          emailId   : data.user_email,
+          emailId   : data.email_id,
           firstName : data.first_name,
           lastName  : data.last_name,
           address   : data.address,
           contact   : data.contact,
-          userBio   : data.user_bio,
+          standard  : data.student_class,
+          schoolName: data.student_school,
           docId     : doc.id
         })
       });
@@ -54,7 +56,8 @@ export default class SettingScreen extends Component{
       "last_name" : this.state.lastName,
       "address"   : this.state.address,
       "number"    : this.state.contact,
-      "user_bio"  : this.state.userBio
+      "student_class": this.state.standard,
+      "student_school": this.state.schoolName
     })
 
     Alert.alert("Profile Updated Successfully")
@@ -69,7 +72,8 @@ export default class SettingScreen extends Component{
   render(){
     return(
       <View style={styles.container} >
-        <MyHeader title="Settings" navigation={this.props.navigation}/>
+        <AppHeader title="Settings" navigation={this.props.navigation} style={{marginTop: 10, height: 110}} />
+        <ScrollView style={{width: '100%', height: '100%'}}>
         <View style={styles.formContainer}>
             <TextInput
               style={styles.formTextInput}
@@ -121,15 +125,25 @@ export default class SettingScreen extends Component{
             />
             <TextInput
               style={styles.formTextInput}
-              placeholder ={"A short note about yourself"}
-              multiline={true}
-              numberOfLines={5}
+              placeholder ={"Standard"}
+              multiline = {true}
               onChangeText={(text)=>{
                 this.setState({
-                  userBio: text
+                  standard: text
                 })
               }}
-                value ={this.state.address}
+                value ={this.state.standard}
+            />
+            <TextInput
+              style={styles.formTextInput}
+              placeholder ={"School"}
+              multiline = {true}
+              onChangeText={(text)=>{
+                this.setState({
+                  schoolName: text
+                })
+              }}
+                value ={this.state.schoolName}
             />
             <TouchableOpacity style={styles.button}
               onPress={()=>{
@@ -138,6 +152,7 @@ export default class SettingScreen extends Component{
               <Text style={styles.buttonText}>Save</Text>
             </TouchableOpacity>
         </View>
+        </ScrollView>
       </View>
     )
   }
@@ -167,7 +182,7 @@ const styles = StyleSheet.create({
   },
   button:{
     width:"75%",
-    height:50,
+    height:60,
     justifyContent:'center',
     alignItems:'center',
     borderRadius:10,

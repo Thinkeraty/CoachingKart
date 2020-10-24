@@ -13,6 +13,9 @@ import AddClasses from './screens/AddClasses';
 import SearchClasses from './screens/SearchClasses';
 import {AppDrawerNavigator} from './components/AppDrawerNavigator'
 import ClassDetails from './screens/ClassDetails';
+import EditClasses from './screens/EditClasses';
+import StudentSettingScreen from './screens/StudentSettingScreen';
+import TeacherSettingScreen from './screens/TeacherSettingScreen';
 
 import { AppTabNavigator } from './components/AppTabNavigator';
 
@@ -32,7 +35,10 @@ const SwitchNavigator = createSwitchNavigator({
   AddClasses: { screen: AddClasses },
   SearchClasses: { screen: SearchClasses },
   Drawer:{screen: AppDrawerNavigator},
-  ClassDetails: {screen: ClassDetails}
+  ClassDetails: {screen: ClassDetails},
+  EditClasses: {screen: EditClasses},
+  StudentSettingScreen: {screen: StudentSettingScreen},
+  TeacherSettingScreen: {screen: TeacherSettingScreen}
   // BottomTab: { screen: AppTabNavigator }
   
 })
