@@ -1,14 +1,32 @@
 import React, { Component} from 'react';
 import { Header,Icon,Badge } from 'react-native-elements';
 import { View, Text, StyeSheet ,Alert} from 'react-native';
+
 import db from '../config'
+import firebase from 'firebase';
 
 export default class AppHeader extends Component{
   constructor(props){
     super(props)
     this.state={
-      value:4
+      value:4,
+      userId: firebase.auth().currentUser.email,
+      settingScreenType: ''
     }
+  }
+
+  getAccountType = () => {
+    db.collection('users').where('email_id', '==', this.state.userId).get()
+      .then(snapshot => {
+        snapshot.forEach(doc => {
+          var data = doc.data()
+          if(data.account_type == "student") {
+            this.setState({ settingScreenType: 'StudentSettingScreen' })
+          } else if(data.account_type == "teacher") {
+            this.setState({ settingScreenType: 'TeacherSettingScreen' }); 
+          }
+        })
+    })
   }
 
 // getNumberOfUnreadNotifications(){
@@ -21,9 +39,9 @@ export default class AppHeader extends Component{
 //   })
 // }
 
-// componentDidMount(){
-//   this.getNumberOfUnreadNotifications()
-// }
+componentDidMount(){
+  this.getAccountType()
+}
 
 
  BellIconWithBadge=()=>{
@@ -40,12 +58,22 @@ export default class AppHeader extends Component{
     )
   }
 
+  UserProfile=()=>{
+    return(
+      <View>
+        <Icon name='user' type='font-awesome' color='#fff' size={25}
+          onPress={() =>this.props.navigation.navigate(this.state.settingScreenType)} containerStyle={{marginBottom: 10}} 
+        />
+      </View>
+    )
+  }
+
   render(){
     return(
         <Header
-          leftComponent={<Icon name='bars' type='font-awesome' color='#fff' containerStyle={{marginBottom: 10}} onPress={() => /*this.props.navigation.toggleDrawer()*/props.navigation.dispatch(DrawerActions.toggleDrawer())}/>}
+          leftComponent={<Icon name='bars' type='font-awesome' color='#fff' containerStyle={{marginBottom: 10}} onPress={() => this.props.navigation.toggleDrawer()}/>}
           centerComponent={{ text: this.props.title, style: { color: '#fff', fontSize:30,fontWeight:"bold", marginBottom: 15} }}
-          rightComponent={<this.BellIconWithBadge {...this.props}/>}
+          rightComponent={<this.UserProfile {...this.props}/>}
           backgroundColor = "#ff5400"
           containerStyle={this.props.style}
         />
