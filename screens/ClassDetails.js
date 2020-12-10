@@ -1,6 +1,7 @@
 import React ,{Component} from 'react';
-import {View,Text,StyleSheet,TouchableOpacity, Alert} from 'react-native';
+import {View,Text,StyleSheet,TouchableOpacity, Alert, Platform} from 'react-native';
 import{Card,Header,Icon} from 'react-native-elements';
+import * as Linking from 'expo-linking';
 
 import AppHeader from '../components/AppHeader'
 
@@ -38,6 +39,20 @@ export default class ClassDetails extends React.Component {
             })
     }
 
+    clickToCall = (number) => {
+        let phoneNumber = number;
+
+        if (Platform.OS === 'android') {
+            phoneNumber = `tel:${number}`;
+        }
+        else {
+            phoneNumber = `telprompt:${number}`;
+        }
+
+        Linking.openURL(phoneNumber);
+        // Alert.alert(phoneNumber)
+        }
+
     componentDidMount() {
         this.getTeacherDetails()
     }
@@ -66,17 +81,17 @@ export default class ClassDetails extends React.Component {
                             <Text style={{fontWeight:'bold'}}>Subject: {this.state.classSubject}</Text>
                         </Card>
                         <Card>
-                            <Text style={{fontWeight:'bold'}}>Class(s): {this.state.classStandard}</Text>
+                            <Text style={{fontWeight:'bold'}}>For Class(s): {this.state.classStandard}</Text>
                         </Card>
                         <Card>
-                            <Text style={{fontWeight:'bold'}}>Location: {"\n"}{this.state.classAddress}</Text>
+                            <Text style={{fontWeight:'bold'}}>Location: {"\n"}{"\n"}{this.state.classAddress}</Text>
                         </Card>
                         <Card>
                             <Text style={{fontWeight:'bold'}}>Contact: {this.state.classContact}</Text>
                         </Card>
                         </Card>
                     </View>
-                    <View style={{flex:0.3, marginTop: 20, marginBottom: 50}}>
+                    <View style={{flex:0.3, marginTop: 15, marginBottom: 60}}>
                     <Card
                     title={"The Teacher"}
                     titleStyle= {{fontSize : 20}}
@@ -88,6 +103,12 @@ export default class ClassDetails extends React.Component {
                         <Text style={{fontWeight:'bold'}}>About: {"\n"}{this.state.teacherBio}</Text>
                     </Card>
                     </Card>
+                    <TouchableOpacity style={styles.button} onPress={() => {this.clickToCall(this.state.classContact)}}>
+                        <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                            <Icon name='phone' type='font-awesome' color='#fff' size={18} containerStyle={{marginTop: 4}} />
+                            <Text style={styles.buttonText}>  Contact</Text>
+                        </View>
+                    </TouchableOpacity>
                 </View>
                 </ScrollView>
             </View>
@@ -105,17 +126,27 @@ const styles = StyleSheet.create({
       alignItems:'center'
     },
     button:{
-      width:200,
-      height:50,
-      justifyContent:'center',
-      alignItems : 'center',
-      borderRadius: 10,
-      backgroundColor: 'orange',
-      shadowColor: "#000",
-      shadowOffset: {
-        width: 0,
-        height: 8
-      },
-      elevation : 16
+        width: 300,
+        height:50,
+        justifyContent:'center',
+        borderRadius: 15,
+        marginTop: 30,
+        marginLeft: 30,
+        backgroundColor:"#ff9800",
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 8,
+        },
+        shadowOpacity: 0.30,
+        shadowRadius: 10.32,
+        elevation: 16,
+        padding: 10,
+        alignItems:'center',
+    },
+    buttonText: {
+        color:'#ffff',
+        fontWeight:'200',
+        fontSize:18
     }
   })
